@@ -1,6 +1,6 @@
 {
     "name": "react-input-type",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "a React input html element component",
     "main": "build/index.js",
     "url": "https://github.com/kevinegstorf/react-html-input",
