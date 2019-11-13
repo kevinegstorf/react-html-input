@@ -95,8 +95,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var Input = function Input() {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Hello");
+var Input = function Input(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Hello");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Input);

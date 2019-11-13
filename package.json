@@ -1,6 +1,6 @@
 {
   "name": "react-html-input",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a React input html element component",
   "main": "build/index.js",
   "repository": {
@@ -8,8 +8,7 @@
     "url": "https://github.com/kevinegstorf/react-html-input"
   },
   "dependencies": {
-    "react": "^16.11.0",
-    "react-dom": "^16.7.0"
+    "react": "^16.11.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
