@@ -25,6 +25,7 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
+  "license": "ISC",
   "author": {
     "name": "Kevin Egstorf",
     "email": "kevin.egstorf@gmail.com"
