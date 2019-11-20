@@ -1,11 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = require('react');
-var styled = _interopDefault(require('styled-components'));
+import { createElement } from 'react';
+import styled from 'styled-components';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -30,10 +24,10 @@ function __makeTemplateObject(cooked, raw) {
 var InputTest = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"], ["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"])));
 var NumberInput = function (_a) {
     var _b = _a.noDefaultIncrementor, noDefaultIncrementor = _b === void 0 ? false : _b;
-    return !noDefaultIncrementor ? (React.createElement("input", { type: "number" })) : (React.createElement(InputTest, null,
-        React.createElement("input", { type: "number" })));
+    return !noDefaultIncrementor ? (createElement("input", { type: "number" })) : (createElement(InputTest, null,
+        createElement("input", { type: "number" })));
 };
 var templateObject_1;
 
-exports.NumberInput = NumberInput;
-//# sourceMappingURL=index.js.map
+export { NumberInput };
+//# sourceMappingURL=index.es.js.map
