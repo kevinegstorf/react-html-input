@@ -7,33 +7,54 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var styled = _interopDefault(require('styled-components'));
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+var Input = function Input(_ref) {
+    var _ref$inputType = _ref.inputType, inputType = _ref$inputType === void 0 ? "" : _ref$inputType;
+    return React.createElement("input", {
+        type: inputType
+    });
+};
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
 }
 
-var InputTest = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"], ["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"])));
-var NumberInput = function (_a) {
-    var _b = _a.noDefaultIncrementor, noDefaultIncrementor = _b === void 0 ? false : _b;
-    return !noDefaultIncrementor ? (React.createElement("input", { type: "number" })) : (React.createElement(InputTest, null,
-        React.createElement("input", { type: "number" })));
+function _templateObject() {
+    var data = _taggedTemplateLiteral(["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"]);
+    _templateObject = function _templateObject() {
+        return data;
+    };
+    return data;
+}
+var InputWrapper = styled.div(_templateObject());
+var NumberInput = function NumberInput(_ref) {
+    var _ref$noArrows = _ref.noArrows, noArrows = _ref$noArrows === void 0 ? false : _ref$noArrows, changeHandler = _ref.changeHandler;
+    var keyHandler = function keyHandler(e) {
+        console.log(e.keyCode);
+        if (e.keyCode === 190 || e.keyCode === 69 || e.keyCode === 189 || e.keyCode === 188) {
+            e.preventDefault();
+            return false;
+        }
+        return undefined;
+    };
+    return noArrows ? React.createElement(InputWrapper, null, React.createElement("input", {
+        type: "number",
+        onChange: changeHandler,
+        onKeyDown: function onKeyDown(event) {
+            return keyHandler(event);
+        }
+    })) : React.createElement("input", {
+        type: "number"
+    });
 };
-var templateObject_1;
 
+exports.Input = Input;
 exports.NumberInput = NumberInput;
 //# sourceMappingURL=index.js.map
