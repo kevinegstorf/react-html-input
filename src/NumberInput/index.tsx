@@ -1,4 +1,5 @@
 import * as React from "react";
+import { KeyboardEvent } from "react";
 import styled from "styled-components";
 
 const InputTest = styled.div`
@@ -13,17 +14,30 @@ const InputTest = styled.div`
 `;
 
 interface Props {
-  noArrows: boolean;
+  noArrows?: boolean;
+  test?: number;
+  changeHandler?: any;
 }
 
-const NumberInput: React.FunctionComponent<Props> = ({ noArrows = false }) => {
-  return !noArrows ? (
-    <input type="number" />
-  ) : (
+export const NumberInput: React.FunctionComponent<Props> = ({
+  noArrows = false,
+  changeHandler
+}) => {
+  const keyHandler = (e: KeyboardEvent) => {
+    if (e.key === "," || e.key === "." || e.key === "e" || e.key === "-") {
+      e.preventDefault();
+    }
+  };
+
+  return noArrows ? (
     <InputTest>
-      <input type="number" />
+      <input
+        type="number"
+        onChange={changeHandler}
+        onKeyPress={event => keyHandler(event)}
+      />
     </InputTest>
+  ) : (
+    <input type="number" />
   );
 };
-
-export default NumberInput;

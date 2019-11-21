@@ -6,7 +6,6 @@ import resolve from "rollup-plugin-node-resolve";
 import pkg from "./package.json";
 
 export default {
-  globals: { "styled-components": "styled" },
   external: ["styled-components"],
   input: "src/index.ts",
   output: [

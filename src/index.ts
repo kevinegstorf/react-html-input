@@ -1,1 +1,2 @@
-export { default as NumberInput } from "./NumberInput";
+export { default as Input } from "./Input";
+export { NumberInput } from "./NumberInput";
