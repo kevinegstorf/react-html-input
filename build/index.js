@@ -7,6 +7,11 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var styled = _interopDefault(require('styled-components'));
 
+var Input = function (_a) {
+    var _b = _a.inputType, inputType = _b === void 0 ? "" : _b;
+    return React.createElement("input", { type: inputType });
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -29,11 +34,17 @@ function __makeTemplateObject(cooked, raw) {
 
 var InputTest = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"], ["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"])));
 var NumberInput = function (_a) {
-    var _b = _a.noDefaultIncrementor, noDefaultIncrementor = _b === void 0 ? false : _b;
-    return !noDefaultIncrementor ? (React.createElement("input", { type: "number" })) : (React.createElement(InputTest, null,
-        React.createElement("input", { type: "number" })));
+    var _b = _a.noArrows, noArrows = _b === void 0 ? false : _b, changeHandler = _a.changeHandler;
+    var keyHandler = function (e) {
+        if (e.key === "," || e.key === "." || e.key === "e" || e.key === "-") {
+            e.preventDefault();
+        }
+    };
+    return noArrows ? (React.createElement(InputTest, null,
+        React.createElement("input", { type: "number", onChange: changeHandler, onKeyPress: function (event) { return keyHandler(event); } }))) : (React.createElement("input", { type: "number" }));
 };
 var templateObject_1;
 
+exports.Input = Input;
 exports.NumberInput = NumberInput;
 //# sourceMappingURL=index.js.map
