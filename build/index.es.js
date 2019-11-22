@@ -1,6 +1,11 @@
 import { createElement } from 'react';
 import styled from 'styled-components';
 
+var Input = function (_a) {
+    var _b = _a.inputType, inputType = _b === void 0 ? "" : _b;
+    return createElement("input", { type: inputType });
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -23,11 +28,16 @@ function __makeTemplateObject(cooked, raw) {
 
 var InputTest = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"], ["\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n  }\n  input[type=\"number\"] {\n    -moz-appearance: textfield;\n  }\n"])));
 var NumberInput = function (_a) {
-    var _b = _a.noDefaultIncrementor, noDefaultIncrementor = _b === void 0 ? false : _b;
-    return !noDefaultIncrementor ? (createElement("input", { type: "number" })) : (createElement(InputTest, null,
-        createElement("input", { type: "number" })));
+    var _b = _a.noArrows, noArrows = _b === void 0 ? false : _b, changeHandler = _a.changeHandler;
+    var keyHandler = function (e) {
+        if (e.key === "," || e.key === "." || e.key === "e" || e.key === "-") {
+            e.preventDefault();
+        }
+    };
+    return noArrows ? (createElement(InputTest, null,
+        createElement("input", { type: "number", onChange: changeHandler, onKeyPress: function (event) { return keyHandler(event); } }))) : (createElement("input", { type: "number" }));
 };
 var templateObject_1;
 
-export { NumberInput };
+export { Input, NumberInput };
 //# sourceMappingURL=index.es.js.map
