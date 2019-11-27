@@ -17,5 +17,3 @@ module.exports = api => {
     ].filter(p => !!p)
   };
 };
-
-// PROOF THAT data test attribute is removed from compiled code.
