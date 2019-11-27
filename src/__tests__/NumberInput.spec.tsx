@@ -16,6 +16,8 @@ describe("NumberInput Component", () => {
     debug();
   });
 
+  // it has default input with only number keypress
+
   // it only renders numbers when keys are pressed
 
   // it only renders positive numbers
@@ -28,4 +30,6 @@ describe("NumberInput Component", () => {
   // it renders a currency sign
 
   // it handles custom styles
+
+  // it handles a custom validation error when inout is not a number
 });

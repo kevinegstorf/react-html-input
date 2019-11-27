@@ -2,7 +2,7 @@ import * as React from "react";
 import { KeyboardEvent } from "react";
 import styled from "styled-components";
 
-const InputTest = styled.div`
+const InputWrapper = styled.div`
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -23,20 +23,28 @@ export const NumberInput: React.FunctionComponent<Props> = ({
   noArrows = false,
   changeHandler
 }) => {
-  const keyHandler = (e: KeyboardEvent) => {
-    if (e.key === "," || e.key === "." || e.key === "e" || e.key === "-") {
+  const keyHandler = (e: KeyboardEvent): boolean | undefined => {
+    if (
+      e.keyCode === 190 ||
+      e.keyCode === 69 ||
+      e.keyCode === 189 ||
+      e.keyCode === 188
+    ) {
       e.preventDefault();
+      return false;
     }
+    return undefined;
   };
 
   return noArrows ? (
-    <InputTest>
+    <InputWrapper>
       <input
+        data-testid="input"
         type="number"
         onChange={changeHandler}
-        onKeyPress={event => keyHandler(event)}
+        onKeyDown={event => keyHandler(event)}
       />
-    </InputTest>
+    </InputWrapper>
   ) : (
     <input type="number" />
   );

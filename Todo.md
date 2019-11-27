@@ -13,3 +13,4 @@
 - [ ] - ticket nummers aan release toevoegen
 - [ ] GitHub page maken
 - [ ] add badges
+- how to write unit tests for android and ios?
