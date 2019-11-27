@@ -16,20 +16,23 @@ const InputWrapper = styled.div`
 interface Props {
   noArrows?: boolean;
   test?: number;
-  changeHandler?: any;
+  minimalNumber?: number;
+  maximalNumber?: number;
+  changeHandler?: () => void;
 }
 
 export const NumberInput: React.FunctionComponent<Props> = ({
   noArrows = false,
-  changeHandler
+  changeHandler,
+  minimalNumber = 0,
+  maximalNumber
 }) => {
   const keyHandler = (e: KeyboardEvent): boolean | undefined => {
-    if (
-      e.keyCode === 190 ||
-      e.keyCode === 69 ||
-      e.keyCode === 189 ||
-      e.keyCode === 188
-    ) {
+    console.log(e.key);
+    const isNum = /^[a-zA-Z0-9._\b]+$/.test(String.fromCharCode(e.keyCode));
+    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      return;
+    } else if (!isNum) {
       e.preventDefault();
       return false;
     }
@@ -39,13 +42,17 @@ export const NumberInput: React.FunctionComponent<Props> = ({
   return noArrows ? (
     <InputWrapper>
       <input
+        pattern="\*d"
         data-testid="input"
+        min={minimalNumber}
+        max={maximalNumber}
+        data-numeric-input
         type="number"
         onChange={changeHandler}
         onKeyDown={event => keyHandler(event)}
       />
     </InputWrapper>
   ) : (
-    <input type="number" />
+    <input type="number" onKeyDown={event => keyHandler(event)} />
   );
 };

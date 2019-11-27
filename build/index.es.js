@@ -29,22 +29,34 @@ function _templateObject() {
 }
 var InputWrapper = styled.div(_templateObject());
 var NumberInput = function NumberInput(_ref) {
-    var _ref$noArrows = _ref.noArrows, noArrows = _ref$noArrows === void 0 ? false : _ref$noArrows, changeHandler = _ref.changeHandler;
+    var _ref$noArrows = _ref.noArrows, noArrows = _ref$noArrows === void 0 ? false : _ref$noArrows, changeHandler = _ref.changeHandler, _ref$minimalNumber = _ref.minimalNumber, minimalNumber = _ref$minimalNumber === void 0 ? 0 : _ref$minimalNumber, maximalNumber = _ref.maximalNumber;
     var keyHandler = function keyHandler(e) {
-        if (e.keyCode === 190 || e.keyCode === 69 || e.keyCode === 189 || e.keyCode === 188) {
+        console.log(e.key);
+        var isNum = /^[a-zA-Z0-9._\b]+$/.test(String.fromCharCode(e.keyCode));
+        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+            return;
+        }
+        else if (!isNum) {
             e.preventDefault();
             return false;
         }
         return undefined;
     };
     return noArrows ? createElement(InputWrapper, null, createElement("input", {
+        pattern: "\\*d",
+        min: minimalNumber,
+        max: maximalNumber,
+        "data-numeric-input": true,
         type: "number",
         onChange: changeHandler,
         onKeyDown: function onKeyDown(event) {
             return keyHandler(event);
         }
     })) : createElement("input", {
-        type: "number"
+        type: "number",
+        onKeyDown: function onKeyDown(event) {
+            return keyHandler(event);
+        }
     });
 };
 
